@@ -15,6 +15,7 @@ import { Store } from '../Store';
 import { getError } from '../utils';
 import { toast } from 'react-toastify';
 import Badge from 'react-bootstrap/esm/Badge';
+import { useState } from 'react';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -32,6 +33,15 @@ function reducer(state, action) {
       return { ...state, loadingPay: false };
     case 'PAY_RESET':
       return { ...state, loadingPay: false, successPay: false };
+    // Add the following in the reducer function
+    case 'MARK_DELIVERED_REQUEST':
+      return { ...state, loadingDeliver: true };
+    case 'MARK_DELIVERED_SUCCESS':
+      return { ...state, loadingDeliver: false, successDeliver: true };
+    case 'MARK_DELIVERED_FAIL':
+      return { ...state, loadingDeliver: false };
+    case 'MARK_DELIVERED_RESET':
+      return { ...state, loadingDeliver: false, successDeliver: false };
 
     case 'DELIVER_REQUEST':
       return { ...state, loadingDeliver: true };
@@ -52,6 +62,11 @@ function reducer(state, action) {
 export default function OrderScreen() {
   const { state } = useContext(Store);
   const { userInfo } = state;
+  const [selectedStatus, setSelectedStatus] = useState('');
+  const [show, setShow] = useState(false);
+  
+
+  const handleClose = () => setShow(false);
 
   const params = useParams();
   const { id: orderId } = params;
@@ -77,6 +92,53 @@ export default function OrderScreen() {
   });
 
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
+
+
+
+
+
+  const handleOrderStatus = async (order) => {
+    if (window.confirm('Are you sure to update status?')) {
+      try {
+        dispatch({ type: 'STATUS_SUCCESS' });
+  
+        // Set the selectedStatus to the desired order status (e.g., 'Delivered')
+        setSelectedStatus('Delivered');
+  
+        // Add a null check for order._id
+        if (!order._id) {
+          throw new Error("Order ID is undefined");
+        }
+  
+        await axios.put(`/api/orders/${order._id}/status`, {
+          selectedStatus: 'Delivered', // Use the correct key for the order status
+        }, {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        });
+  
+        // Fetch the updated orders
+        const { data: updatedOrders } = await axios.get('/api/orders', {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        });
+  
+        // Dispatch the action to update state with the fetched orders
+        dispatch({ type: 'FETCH_ORDERS_SUCCESS', payload: updatedOrders });
+  
+        toast.success('Order status successfully updated');
+        handleClose();
+        window.location.reload();
+      } catch (err) {
+        toast.error(getError(err));
+        dispatch({
+          type: 'FETCH_FAIL',
+          payload: getError(err),
+        });
+      }
+    }
+  };
+  
+
+
 
   function createOrder(data, actions) {
     return actions.order
@@ -127,7 +189,6 @@ export default function OrderScreen() {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
       }
     };
-
     if (!userInfo) {
       return navigate('/login');
     }
@@ -344,6 +405,16 @@ export default function OrderScreen() {
                 )}
               </ListGroup>
             </Card.Body>
+            <Button
+  type="button"
+  hidden={order.orderStatus !== 'Shipping'}
+  variant="success"
+  disabled={order.orderStatus !== 'Shipping'}
+  value='Delivered' // Disable the button if the order status is not "Processing"
+  onClick={() => handleOrderStatus(order)}
+>
+  Mark Delivered
+</Button>
           </Card>
         </Col>
       </Row>
