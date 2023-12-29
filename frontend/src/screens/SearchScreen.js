@@ -125,9 +125,8 @@ export default function SearchScreen() {
     const filterRating = filter.rating || rating;
     const filterPrice = filter.price || price;
     const sortOrder = filter.order || order;
-    return `${
-      skipPathname ? '' : '/search?'
-    }category=${filterCategory}&query=${filterQuery}&price=${filterPrice}&rating=${filterRating}&order=${sortOrder}&page=${filterPage}`;
+    return `${skipPathname ? '' : '/search?'
+      }category=${filterCategory}&query=${filterQuery}&price=${filterPrice}&rating=${filterRating}&order=${sortOrder}&page=${filterPage}`;
   };
   return (
     <div>
@@ -199,9 +198,9 @@ export default function SearchScreen() {
                     {price !== 'all' && ' : Price ' + price}
                     {rating !== 'all' && ' : Rating ' + rating + ' & up'}
                     {query !== 'all' ||
-                    category !== 'all' ||
-                    rating !== 'all' ||
-                    price !== 'all' ? (
+                      category !== 'all' ||
+                      rating !== 'all' ||
+                      price !== 'all' ? (
                       <Button
                         variant="light"
                         onClick={() => navigate('/search')}
@@ -231,7 +230,7 @@ export default function SearchScreen() {
 
               <Row>
                 {products.map((product) => (
-                  <Col sm={6} lg={4} className="mb-3" key={product._id}>
+                  <Col sm={6} lg={3} className="mb-5" key={product._id}>
                     <Product product={product}></Product>
                   </Col>
                 ))}
@@ -240,20 +239,20 @@ export default function SearchScreen() {
               <div>
                 {[...Array(pages).keys()].map((x) => (
                   <LinkContainer
-                  key={x + 1}
-                  className="mx-1"
-                  to={{
-                    pathname: '/search',
-                    search: getFilterUrl({ page: x + 1 }, true), // <-- Corrected 'search'
-                  }}
-                >
-                  <Button
-                    className={Number(page) === x + 1 ? 'text-bold' : ''}
-                    variant="light"
+                    key={x + 1}
+                    className="mx-1"
+                    to={{
+                      pathname: '/search',
+                      search: getFilterUrl({ page: x + 1 }, true), // <-- Corrected 'search'
+                    }}
                   >
-                    {x + 1}
-                  </Button>
-                </LinkContainer>
+                    <Button
+                      className={Number(page) === x + 1 ? 'text-bold' : ''}
+                      variant="light"
+                    >
+                      {x + 1}
+                    </Button>
+                  </LinkContainer>
                 ))}
               </div>
             </>

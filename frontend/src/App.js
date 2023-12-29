@@ -163,7 +163,7 @@ function App() {
         <div
           className={
             sidebarIsOpen
-              ? 'active-nav side-navbar d-flex justify-content-between flex-wrap flex-column'
+              ? 'active-nav side-navbar d-flex justify-content-between flex-wrap flex-column bg-gradient'
               : 'side-navbar d-flex justify-content-between flex-wrap flex-column'
           }
         >
