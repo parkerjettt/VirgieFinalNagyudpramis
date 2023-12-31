@@ -18,8 +18,8 @@ const AboutScreen = () => {
             We hope you will enjoy shopping at Avon Virgie. Thank you for supporting the website!
           </p>
         </Col>
-        <Col lg={8}>
-          {/* <Image src="https://scontent.fceb2-1.fna.fbcdn.net/v/t1.15752-9/396455745_899455191595897_5341898933740480073_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeExZa7G7s12Ilj6dDeoZ8BZA4blKmJ7EPoDhuUqYnsQ-k7FGgA8vyLQE8sCyp75lq2sqvqj1CV2sZdPz4JFyb-Q&_nc_ohc=Ppt9RXNbIUEAX_V-Jbf&_nc_ht=scontent.fceb2-1.fna&oh=03_AdRmakT9_DENDkzqOe5livUI7Q4Jt93zaAceqjKRE_jw4Q&oe=656851A1" alt="A group of People" fluid /> */}
+        <Col lg={6}>
+          <Image src="https://i.pinimg.com/736x/0e/d3/44/0ed344298c492d445319865592c4111b.jpg" alt="Avon story" className="img-fluid rounded shadow" />
         </Col>
       </Row>
 
@@ -28,11 +28,33 @@ const AboutScreen = () => {
           <h1 className="text-3xl lg:text-4xl font-bold leading-9 text-pink-800 pb-4">Our Story</h1>
           <p className="font-normal text-base leading-6 text-gray-600">
             Avon Virgie is still a young website, but it will grow to become a trusted resource for Avon customers. The team is committed to providing their customers with the best possible browsing experience, and they are always looking for new ways to improve the website.
-            In the future, the team hopes to expand Avon Virgieto offer even more products and services and to reach even more Avon customers. They also hope to continue to support the local community through their charitable giving initiatives.
+            In the future, the team hopes to expand Avon Virgie to offer even more products and services and to reach even more Avon customers. They also hope to continue to support the local community through their charitable giving initiatives.
             Thank you for choosing Avon Virgie
           </p>
         </Col>
+        <Col lg={7}>
+          <Row className="justify-content-between" style={{ marginTop: '60px', marginLeft: "92px" }}>
+            <Col lg={3}>
+              <Image src="https://i.ibb.co/JkjTh9N/6b8c0c391cf5070e1e57db65ffc19e51.jpg" alt="Violy Joy G. Julapong" className="img-fluid rounded shadow" />
+              <p className="text-center">Violy Joy G. Julapong</p>
+            </Col>
+            <Col lg={3}>
+              <Image src="https://i.pinimg.com/736x/99/5b/fa/995bfa388ff45bbdc099acadf0bb5c69.jpg" alt="Pearl Nerijean Calape" className="img-fluid rounded shadow" />
+              <p className="text-center">Pearl Nerijean Calape</p>
+            </Col>
+            <Col lg={3}>
+              <Image src="https://i.pinimg.com/736x/14/43/ec/1443ec1d851b529627c0f3f9e8ac3738.jpg" alt="Jerome Diaz" className="img-fluid rounded shadow" />
+              <p className="text-center">Jerome Diaz</p>
+            </Col>
+            <Col lg={3}>
+              <Image src="https://i.pinimg.com/736x/44/5e/c1/445ec16ee41a3193eae33e11ef832e5d.jpg" alt="Jethro Parker" className="img-fluid rounded shadow" />
+              <p className="text-center">Jethro Parker</p>
+            </Col>
+          </Row>
+        </Col>
       </Row>
+
+     
     </Container>
   );
 };

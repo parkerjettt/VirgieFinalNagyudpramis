@@ -87,7 +87,7 @@ function Product(props) {
   };
 
   return (
-    <Card>
+    <Card className='shadow'>
       <Link to={`/product/${product.slug}`}>
         <img
           src={product.image}

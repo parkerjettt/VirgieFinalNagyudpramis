@@ -189,7 +189,7 @@ export default function SearchScreen() {
             <MessageBox variant="danger">{error}</MessageBox>
           ) : (
             <>
-              <Row className="justify-content-between mb-3">
+              <Row className="justify-content-between mb-4">
                 <Col md={6}>
                   <div>
                     {countProducts === 0 ? 'No' : countProducts} Results
@@ -228,13 +228,13 @@ export default function SearchScreen() {
                 <MessageBox>No Product Found</MessageBox>
               )}
 
-              <Row>
-                {products.map((product) => (
-                  <Col sm={6} lg={3} className="mb-5" key={product._id}>
-                    <Product product={product}></Product>
-                  </Col>
-                ))}
-              </Row>
+              <Row className="justify-content-center mb-5">
+            {products.map((product) => (
+              <Col key={product.slug} xs={7} sm={6} md={6} lg={3} className="mb-3">
+                <Product product={product}></Product>
+              </Col>
+            ))}
+          </Row>
 
               <div>
                 {[...Array(pages).keys()].map((x) => (
