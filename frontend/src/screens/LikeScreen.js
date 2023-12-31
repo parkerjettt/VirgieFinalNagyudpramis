@@ -57,7 +57,7 @@ const LikeScreen = () => {
       <Helmet>
         <title>A v o n | Likes</title>
       </Helmet>
-      <h1>Likes Product</h1>
+      <h1>Liked Product</h1>
       <div className="products">
         {loading ? (
           <LoadingBox />
@@ -66,7 +66,7 @@ const LikeScreen = () => {
         ) : (
           <Row>
             {products.map((product) => (
-              <Col key={product.slug} sm={12} md={6} className="mb-3">
+              <Col key={product.slug} sm={12} md={3} className="mb-3">
                 <Product product={product} isLike={true}></Product>
               </Col>
             ))}

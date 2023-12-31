@@ -160,24 +160,26 @@ function App() {
             </Container>
           </Navbar>
         </header>
-        <div
+        <div 
           className={
             sidebarIsOpen
-              ? 'active-nav side-navbar d-flex justify-content-between flex-wrap flex-column bg-gradient'
+              ? 'active-nav side-navbar d-flex justify-content-between text-center flex-wrap flex-column'
               : 'side-navbar d-flex justify-content-between flex-wrap flex-column'
           }
         >
           <Nav className="flex-column text-white w-100 p-2">
             <Nav.Item>
-            <Link className="text-white w-100" to="/aboutus">
+            <Link className="text-white w-100 nav-link" to="/aboutus">
                         <strong>About us</strong>
                       </Link>
             </Nav.Item>
             <Nav.Item>
+              <Link className="text-white w-100 nav-link" to="/search">
               <strong>Categories</strong>
+              </Link>
             </Nav.Item>
             {categories.map((category) => (
-              <Nav.Item key={category}>
+              <Nav.Item key={category} className='btn-primary bg-danger mb-2 d-flex'>
                 <LinkContainer
                   to={{ pathname: '/search', search: `category=${category}` }}
                   onClick={() => setSidebarIsOpen(false)}

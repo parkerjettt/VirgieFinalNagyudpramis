@@ -32,7 +32,8 @@ function HomeScreen() {
       dispatch({ type: "FETCH_REQUEST" });
       try {
         const result = await axios.get("/api/products");
-        dispatch({ type: "FETCH_SUCCESS", payload: result.data });
+        const limitedProducts = result.data.slice(0, 8);
+        dispatch({ type: "FETCH_SUCCESS", payload: limitedProducts });
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: err.message });
       }
