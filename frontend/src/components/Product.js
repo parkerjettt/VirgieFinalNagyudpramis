@@ -118,7 +118,7 @@ function Product(props) {
             onClick={handleLike}
             icon="heart" size="2x" 
             color={liked ? 'red' : 'black'}
-            style={{ marginLeft: '240px'}} />
+             />
             ) : ''}
             </>
           

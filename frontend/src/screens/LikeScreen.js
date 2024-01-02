@@ -64,9 +64,9 @@ const LikeScreen = () => {
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-          <Row>
+          <Row className="justify-content-center">
             {products.map((product) => (
-              <Col key={product.slug} sm={12} md={3} className="mb-3">
+              <Col key={product.slug} xs={7} sm={6} md={6} lg={3} className="mb-3">
                 <Product product={product} isLike={true}></Product>
               </Col>
             ))}
