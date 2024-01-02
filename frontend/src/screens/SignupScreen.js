@@ -28,6 +28,20 @@ export default function SignupScreen() {
       toast.error('Passwords do not match');
       return;
     }
+    const hasNumberInName = /\d/.test(name);
+    if (hasNumberInName) {
+      toast.error('Name should not contain a number');
+      return;
+    }
+    if (password.length < 6) {
+      toast.error('Password should be at least 6 characters long');
+      return;
+    }
+    const hasNumber = /\d/.test(password);
+    if (!hasNumber) {
+      toast.error('Password should contain at least one number');
+      return;
+    }
     try {
       const { data } = await Axios.post('/api/users/signup', {
         name,

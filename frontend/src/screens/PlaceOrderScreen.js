@@ -43,7 +43,7 @@ export default function PlaceOrderScreen() {
       (a, c) => a + (c.salePrice > 0 ? c.salePrice * c.quantity : c.price * c.quantity), 0
     )
   );
-  cart.shippingPrice = cart.itemsPrice > 100 ? round2(0) : round2(10);
+  cart.shippingPrice = 100;
   cart.taxPrice = 0;
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
