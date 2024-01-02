@@ -96,7 +96,9 @@ function ProductScreen() {
           toast.error('Please select a variantion.');
           return; 
         }
+        
     }
+    if(!userInfo) return toast.error('Please login to Add a product to the Cart.');
     // const existItem = cart.cartItems.find((x) => x._id === product._id);
     const existItem = cart.cartItems.find((x) => x._id === product._id && x.variant === selectedVariant);
     const quantity = existItem ? existItem.quantity + 1 : 1;
