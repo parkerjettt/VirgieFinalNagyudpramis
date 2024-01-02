@@ -179,7 +179,7 @@ function App() {
               </Link>
             </Nav.Item>
             {categories.map((category) => (
-              <Nav.Item key={category} className='btn-primary bg-danger mb-2 d-flex'>
+              <Nav.Item key={category} className='border-top r-1 btn-primary bg-transparent d-flex text-light'>
                 <LinkContainer
                   to={{ pathname: '/search', search: `category=${category}` }}
                   onClick={() => setSidebarIsOpen(false)}

@@ -63,6 +63,7 @@ export default function OrderHistoryScreen() {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
+      <div className="table-responsive text-nowrap">
         <table className="table">
           <thead>
             <tr>
@@ -95,6 +96,7 @@ export default function OrderHistoryScreen() {
             ))}
           </tbody>
         </table>
+        </div>
       )}
     </div>
   );
