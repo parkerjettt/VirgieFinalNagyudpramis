@@ -93,7 +93,7 @@ function ProductScreen() {
   const addToCartHandler = async () => {
     if (product.variant.length > 0) {
       if(selectedVariant === null) {
-          toast.error('Please select a variantion.');
+          toast.error('Please select a variation.');
           return; 
         }
         
